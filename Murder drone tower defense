@@ -1,0 +1,36 @@
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+
+local Window = Rayfield:CreateWindow({
+   Name = "MD Tower Defense",
+   LoadingTitle = "Tower Defense Game",
+   LoadingSubtitle = "by Infinity_Shadow",
+})
+
+local MainTab = Window:CreateTab("Home", nil)
+local MainSection = MainTab:CreateSection("Main")
+
+local characters = {
+    "Zombie Cyn LVL 1", "Vampire Uzi LVL 1", "Turret LVL 1", "The Obliterator LVL 1", "The Entity LVL 1",
+    "Thad LVL 1", "Tesscyn LVL 1", "Tessa LVL 1", "Teacher LVL 1", "Solver Uzi LVL 1",
+    "Solver Doll LVL 1", "Snow Cyn LVL 1", "Shockwave J LVL 1", "Santa N LVL 1", "SDV LVL 1",
+    "SDS LVL 1", "SDN LVL 1", "SDJ LVL 1", "Reindeer Alice LVL 1", "Rebecca LVL 1",
+    "Railgunner Uzi LVL 1", "Prom V LVL 1", "Prom Uzi LVL 1", "Overseer N LVL 1", "Nori LVL 1",
+    "Lord Khan LVL 1", "Lord Frumptlebucket LVL 1", "Lizzy LVL 1", "Khan LVL 1", "Ice Queen Nori LVL 1",
+    "Chainsaw N LVL 1", "Claw V LVL 1", "Dapper N LVL 1", "Doll LVL 1", "EM Cyn LVL 1",
+    "EMJ LVL 1", "EMN LVL 1", "EMV LVL 1", "Elf Uzi LVL 1", "Essence LVL 1",
+    "Fireworker LVL 1", "Frozen Drone LVL 1", "Ghost J LVL 1", "Ghost Pawn LVL 1", "Gingerbread V LVL 1",
+    "Gravestone V LVL 1"
+}
+
+for _, character in ipairs(characters) do
+    MainTab:CreateButton({
+        Name = "Spawn " .. character,
+        Callback = function()
+            local args = {
+                [1] = character,
+                [2] = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+            }
+            game:GetService("ReplicatedStorage").Functions.SpawnTower:InvokeServer(unpack(args))
+        end,
+    })
+end
